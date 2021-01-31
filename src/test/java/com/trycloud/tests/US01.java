@@ -5,6 +5,7 @@ import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -34,7 +35,7 @@ public class US01 {
 
     @Test
     public void testCase02() {
-        driver.get("http://qa.trycloud.net/index.php/login?clear=1");
+        driver.get(System.getProperty("tryCloudURL"));
         WebElement login = driver.findElement(By.id("user"));
 
         Random rd = new Random();
@@ -47,7 +48,16 @@ public class US01 {
 
         driver.findElement(By.id("submit-form")).click();
 
+        String title = driver.getTitle();
+        String url = driver.getCurrentUrl();
         WebElement confirmationNote = driver.findElement(By.xpath("//"));
+        String expectedNote = "Wrong username or password.";
+        String expectedTitle = "";
+
+
+        Assert.assertTrue(confirmationNote.getText().equals(expectedNote));
+        Assert.assertTrue(title.equals(expectedTitle));
+        Assert.assertTrue(url.equals(System.getProperty("tryCloudURL")));
     }
 
     @AfterMethod

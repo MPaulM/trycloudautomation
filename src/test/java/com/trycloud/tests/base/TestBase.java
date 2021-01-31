@@ -31,7 +31,7 @@ public abstract class TestBase {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        driver.get("http://qa.trycloud.net/index.php/login?clear=1");
+        driver.get(properties.getProperty("tryCloudURL"));
         WebElement login = driver.findElement(By.id("user"));
 
         //Random rd = new Random();
