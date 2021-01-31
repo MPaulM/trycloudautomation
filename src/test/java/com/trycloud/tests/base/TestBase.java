@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 public abstract class TestBase {
    public WebDriver driver;
-
+   public Random rd = new Random();
     @BeforeClass
     public void setUpClass() throws IOException {
        // driver = WebDriverFactory.getDriver("chrome");
@@ -34,7 +34,7 @@ public abstract class TestBase {
         driver.get("http://qa.trycloud.net/index.php/login?clear=1");
         WebElement login = driver.findElement(By.id("user"));
 
-        Random rd = new Random();
+        //Random rd = new Random();
         ArrayList<String> userNames = new ArrayList<>();
         userNames.addAll(Arrays.asList(properties.getProperty("login1"), properties.getProperty("login2"), properties.getProperty("login3"), properties.getProperty("login4")));
 

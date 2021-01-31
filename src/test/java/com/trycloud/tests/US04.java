@@ -29,7 +29,7 @@ public class US04 extends TestBase {
         driver.findElement(By.xpath("//input[@class='app-navigation-search__input']")).sendKeys(Keys.SPACE);
         List<WebElement> userList = driver.findElements(By.xpath("//ul[@class='contacts-list']//div[@class='acli__content__line-one']"));
         System.out.println(userList.size());
-        Random rd = new Random();
+        //Random rd = new Random();
         driver.findElement(By.xpath("//input[@class='app-navigation-search__input']")).sendKeys(Keys.BACK_SPACE, userList.get(rd.nextInt(userList.size())).getText());
         driver.findElement(By.xpath("//a[@class='acli']")).click();
         WebElement msgInput = driver.findElement(By.xpath("//div[@class='new-message-form__advancedinput']"));
