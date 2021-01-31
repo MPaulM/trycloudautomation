@@ -4,6 +4,7 @@ import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -19,8 +20,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class TestBase {
    public WebDriver driver;
 
-    @BeforeMethod
-    public void setUpMethod() throws IOException {
+    @BeforeClass
+    public void setUpClass() throws IOException {
        // driver = WebDriverFactory.getDriver("chrome");
         Properties properties = new Properties();
         String path = "configuration.properties";
@@ -44,8 +45,8 @@ public abstract class TestBase {
         driver.findElement(By.id("submit-form")).click();
     }
 
-    @AfterMethod
-    public void tearDownMethod() {
+    @AfterClass
+    public void tearDownClass() {
         driver.close();
     }
 
