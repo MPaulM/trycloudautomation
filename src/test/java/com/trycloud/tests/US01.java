@@ -35,7 +35,7 @@ public class US01 {
 
     @Test
     public void testCase02() {
-        driver.get(System.getProperty("tryCloudURL"));
+        driver.get(properties.getProperty("tryCloudURL"));
         WebElement login = driver.findElement(By.id("user"));
 
         Random rd = new Random();
@@ -57,7 +57,7 @@ public class US01 {
 
         Assert.assertTrue(confirmationNote.getText().equals(expectedNote));
         Assert.assertTrue(title.equals(expectedTitle));
-        Assert.assertTrue(url.equals(System.getProperty("tryCloudURL")));
+        Assert.assertTrue(url.equals(properties.getProperty("tryCloudURL")));
     }
 
     @AfterMethod
