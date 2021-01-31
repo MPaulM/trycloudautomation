@@ -50,13 +50,13 @@ public class US01 {
 
         String title = driver.getTitle();
         String url = driver.getCurrentUrl();
-        WebElement confirmationNote = driver.findElement(By.xpath("//"));
+        WebElement confirmationNote = driver.findElement(By.xpath("//div//p[@class='warning wrongPasswordMsg']"));
         String expectedNote = "Wrong username or password.";
-        String expectedTitle = "";
+        String expectedTitle = "Trycloud - QA";
 
 
         Assert.assertTrue(confirmationNote.getText().equals(expectedNote));
-        Assert.assertTrue(title.equals(expectedTitle));
+        Assert.assertTrue(title.contains(expectedTitle));
         Assert.assertTrue(url.equals(properties.getProperty("tryCloudURL")));
     }
 
