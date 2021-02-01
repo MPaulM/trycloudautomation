@@ -1,6 +1,7 @@
 package com.trycloud.tests;
 
 import com.trycloud.tests.base.TestBase;
+import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,26 +22,22 @@ import java.util.concurrent.TimeUnit;
 
 public class US01 {
     WebDriver driver;
-    Properties properties = new Properties();
     @BeforeMethod
-    public void setUpMethod() throws IOException {
-        //Properties properties = new Properties();
-        String path = "configuration.properties";
-        FileInputStream file = new FileInputStream(path);
-        properties.load(file);
-        driver = WebDriverFactory.getDriver(properties.getProperty("browser"));
+    public void setUpMethod() {
+
+        driver = WebDriverFactory.getDriver(ConfigurationReader.getProperties("browser"));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     @Test
     public void testCase02() {
-        driver.get(properties.getProperty("tryCloudURL"));
+        driver.get(ConfigurationReader.getProperties("tryCloudURL"));
         WebElement login = driver.findElement(By.id("user"));
 
         Random rd = new Random();
         ArrayList<String> userNames = new ArrayList<>();
-        userNames.addAll(Arrays.asList(properties.getProperty("login1"), properties.getProperty("login2"), properties.getProperty("login3"), properties.getProperty("login4")));
+        userNames.addAll(Arrays.asList(ConfigurationReader.getProperties("login1"), ConfigurationReader.getProperties("login2"), ConfigurationReader.getProperties("login3"), ConfigurationReader.getProperties("login4")));
 
         login.sendKeys(userNames.get(rd.nextInt(userNames.size())));
         WebElement password = driver.findElement(By.id("password"));
@@ -57,7 +54,7 @@ public class US01 {
 
         Assert.assertTrue(confirmationNote.getText().equals(expectedNote));
         Assert.assertTrue(title.contains(expectedTitle));
-        Assert.assertTrue(url.equals(properties.getProperty("tryCloudURL")));
+        Assert.assertTrue(url.equals(ConfigurationReader.getProperties("tryCloudURL")));
     }
 
     @AfterMethod

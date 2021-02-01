@@ -41,6 +41,5 @@ public class US04 extends TestBase {
         BrowserUtils.sleep(5);
         Assert.assertTrue(driver.findElement(By.xpath("//div[@class='message__main__text']")).isDisplayed());
 
-        //Talk updates ✅- You can now change your camera and microphone while being in a call23
     }
 }
