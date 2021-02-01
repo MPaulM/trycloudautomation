@@ -5,5 +5,7 @@ import org.testng.annotations.Test;
 
 public class US02 extends TestBase {
     @Test
-    public void
+    public void cheking() {
+
+    }
 }
