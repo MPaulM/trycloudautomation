@@ -1,5 +1,6 @@
 package com.trycloud.tests;
 
+import com.github.javafaker.Faker;
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
@@ -41,7 +42,8 @@ public class US01 {
 
         login.sendKeys(userNames.get(rd.nextInt(userNames.size())));
         WebElement password = driver.findElement(By.id("password"));
-        password.sendKeys("password");
+        Faker faker = new Faker();
+        password.sendKeys(faker.internet().password());
 
         driver.findElement(By.id("submit-form")).click();
 
