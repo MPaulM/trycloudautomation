@@ -47,11 +47,12 @@ public class US01 {
         WebElement confirmationNote = driver.findElement(By.xpath("//div//p[@class='warning wrongPasswordMsg']"));
         String expectedNote = "Wrong username or password.";
         String expectedTitle = "Trycloud - QA";
+        String expectedUrl = "http://qa.trycloud.net/index.php/login?user=";
 
 
-        Assert.assertTrue(confirmationNote.getText().equals(expectedNote));
-        Assert.assertTrue(title.contains(expectedTitle));
-        Assert.assertTrue(url.equals(ConfigurationReader.getProperties("tryCloudURL")));
+        Assert.assertTrue(confirmationNote.getText().equals(expectedNote), "message is NOT the same");
+        Assert.assertTrue(title.equals(expectedTitle), "Title is NOT the same");
+        Assert.assertTrue(url.contains(expectedUrl), "URL is NOT the same");
     }
 
     @AfterMethod

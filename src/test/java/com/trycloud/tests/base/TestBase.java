@@ -38,9 +38,9 @@ public abstract class TestBase {
         password.sendKeys(ConfigurationReader.getProperties("password"));
 
         driver.findElement(By.id("submit-form")).click();
-        String expectedPageUrl = "";
+        String expectedPageUrl = "http://qa.trycloud.net/index.php/apps/files/?dir=/";
         String actualPageUrl = driver.getCurrentUrl();
-        Assert.assertTrue(expectedPageUrl.equals(actualPageUrl));
+        Assert.assertTrue(expectedPageUrl.contains(actualPageUrl));
     }
 
     @AfterClass
