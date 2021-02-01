@@ -5,6 +5,7 @@ import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -41,6 +42,9 @@ public abstract class TestBase {
         password.sendKeys(ConfigurationReader.getProperties("password"));
 
         driver.findElement(By.id("submit-form")).click();
+        String expectedPageUrl = "";
+        String actualPageUrl = driver.getCurrentUrl();
+        Assert.assertTrue(expectedPageUrl.equals(actualPageUrl));
     }
 
     @AfterClass

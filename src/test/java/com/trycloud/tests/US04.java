@@ -42,4 +42,5 @@ public class US04 extends TestBase {
         Assert.assertTrue(driver.findElement(By.xpath("//div[@class='message__main__text']")).isDisplayed());
 
     }
+
 }
